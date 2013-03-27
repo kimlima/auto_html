@@ -9,13 +9,13 @@ AutoHtml.add_filter(:youtube_with_start).with(:width => 420, :height => 315, :fr
     sub_text_embed = $4
     sub_text_short = $5
     if !sub_text_embed.blank?
-      parameters = /.*[&?]t=((\d*)m)?((\d*)s)?/
+      parameters = /.*[&?#]t=((\d*)m)?((\d*)s)?/
       sub_text_embed.gsub(parameters) do
         start_time += 60*$2.to_i if !$2.blank?
         start_time += $4.to_i if !$4.blank?
       end
     elsif !sub_text_short.blank?
-      parameters = /.*#t=((\d*)m)?((\d*)s)?/
+      parameters = /.*[&?#]t=((\d*)m)?((\d*)s)?/
       sub_text_short.gsub(parameters) do
         start_time += 60*$2.to_i if !$2.blank?
         start_time += $4.to_i if !$4.blank?
