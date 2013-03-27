@@ -24,6 +24,6 @@ AutoHtml.add_filter(:youtube_with_start).with(:width => 420, :height => 315, :fr
   	wmode = options[:wmode]
 		src = "//www.youtube.com/embed/#{youtube_id}"
 		src += "?wmode=#{wmode}" if wmode
-    %{<iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" "#{defined?(start_time) && start_time > 0 ? 'start=' + start_time.to_s + ' ' : ''}"allowfullscreen></iframe>}
+    %{<iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" #{defined?(start_time) && start_time > 0 ? 'start=' + '"' + start_time.to_s + '"' : ''} allowfullscreen></iframe>}
   end
 end
